@@ -1,7 +1,7 @@
 import wx
-from notificationbar import NotificationBar
+from notificationbar import NotificationBar, NOTIFY_SHORT, NOTIFY_LONG
 import threading
-import time
+
 
 class TestFrame(wx.Frame):
 
@@ -21,9 +21,11 @@ class TestFrame(wx.Frame):
     
     def _on_notify_btn(self, evt):
         def _notify():
-            #time.sleep(3)
-            wx.CallAfter(NotificationBar, self, -1, "", "This is an exmaple text\nto be displayed on\nthe Screen at any onetime")
+            wx.CallAfter(NotificationBar, self, -1, "",
+                         "This is an exmaple text\nto be displayed on\nthe Screen at any onetime",
+                         timeout=NOTIFY_LONG)
         threading.Thread(target=_notify).start()
+
 
 if __name__ == '__main__':
     app = wx.App()
