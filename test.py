@@ -23,7 +23,7 @@ class TestFrame(wx.Frame):
         def _notify():
             wx.CallAfter(NotificationBar, self, -1, "",
                          "This is an exmaple text\nto be displayed on\nthe Screen at any onetime",
-                         timeout=NOTIFY_LONG)
+                         timeout=NOTIFY_SHORT)
         threading.Thread(target=_notify).start()
 
 
